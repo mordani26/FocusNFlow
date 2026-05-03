@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "641860910758",
+    "project_id": "focus-n-flow-dm",
+    "storage_bucket": "focus-n-flow-dm.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:641860910758:android:3f90b42f238fd128bc3e67",
+        "android_client_info": {
+          "package_name": "com.example.focus_n_flow"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC2iCzQYRBNSb0w3CN8PHCR7lKcfZgCpuI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
