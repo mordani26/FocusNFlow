@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import '../services/group_service.dart';
+import 'group_chat_screen.dart';
 
 class GroupsScreen extends StatefulWidget {
   @override
@@ -13,6 +14,15 @@ class _GroupsScreenState extends State<GroupsScreen> {
   final nameController = TextEditingController();
   final courseController = TextEditingController();
   final descriptionController = TextEditingController();
+
+  void openChat(String groupId, String groupName) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (_) => GroupChatScreen(groupId: groupId, groupName: groupName),
+      ),
+    );
+  }
 
   void showCreateGroupDialog() {
     showDialog(
@@ -135,17 +145,27 @@ class _GroupsScreenState extends State<GroupsScreen> {
                       SizedBox(height: 8),
                       Text('Members: $membersCount'),
                       SizedBox(height: 12),
-                      ElevatedButton(
-                        onPressed: () async {
-                          await groupService.joinGroup(group.id);
 
-                          if (context.mounted) {
-                            ScaffoldMessenger.of(context).showSnackBar(
-                              SnackBar(content: Text('Joined group')),
-                            );
-                          }
-                        },
-                        child: Text('Join Group'),
+                      Row(
+                        children: [
+                          ElevatedButton(
+                            onPressed: () async {
+                              await groupService.joinGroup(group.id);
+
+                              if (context.mounted) {
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  SnackBar(content: Text('Joined group')),
+                                );
+                              }
+                            },
+                            child: Text('Join'),
+                          ),
+                          SizedBox(width: 10),
+                          ElevatedButton(
+                            onPressed: () => openChat(group.id, name),
+                            child: Text('Open Chat'),
+                          ),
+                        ],
                       ),
                     ],
                   ),
